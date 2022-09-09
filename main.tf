@@ -25,4 +25,11 @@ resource "linode_lke_cluster" "lke_cluster" {
       max = 2
     }
   }
+
+  lifecycle {
+    ignore_changes = [
+      pool.0.count
+    ]
+  }
+
 }
