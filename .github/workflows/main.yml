@@ -26,20 +26,20 @@ jobs:
       run: terraform fmt -check -diff
       continue-on-error: true
 
-    - name: Setup Terraform Backend
-      id: backend
-      run: |
-        cat > backend.tf << EOF
-        terraform {
-          cloud {
-            organization = "${{ secrets.TF_CLOUD_ORGANIZATION }}"
+   # - name: Setup Terraform Backend
+   #   id: backend
+   #   run: |
+   #     cat > backend.tf << EOF
+   #     terraform {
+   #       cloud {
+   #         organization = "${{ secrets.TF_CLOUD_ORGANIZATION }}"
 
-            workspaces {
-              name = "${{ secrets.TF_CLOUD_WORKSPACE }}"
-            }
-          }
-        }
-        EOF
+     #       workspaces {
+     #         name = "${{ secrets.TF_CLOUD_WORKSPACE }}"
+     #       }
+     #     }
+     #   }
+     #   EOF
 
     - name: Terraform Init
       id: init
