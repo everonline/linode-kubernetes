@@ -11,12 +11,12 @@ provider "linode" {
 }
 
 resource "linode_lke_cluster" "lke_cluster" {
-  label       = "everonline.eu"
+  label       = "lke.everonline.eu"
   k8s_version = "1.23"
   region      = "eu-west"
 
   pool {
     type  = "g6-standard-1"
-    count = 2
+    count = 1
   }
 }
