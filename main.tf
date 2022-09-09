@@ -14,6 +14,7 @@ resource "linode_lke_cluster" "lke_cluster" {
   label       = "lke.everonline.eu"
   k8s_version = "1.23"
   region      = "eu-west"
+  tags        = ["linode"]
 
   pool {
     type  = "g6-standard-1"
