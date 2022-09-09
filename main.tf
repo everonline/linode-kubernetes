@@ -24,13 +24,13 @@ resource "linode_lke_cluster" "lke_cluster" {
       max = 2
     }
 
-  # Prevent Count From Overriding Autoscaler
+# Prevent Count From Overriding Autoscaler
   
-  lifecycle {
-    ignore_changes = [
-      pool.0.count
-    ]
-  }
+lifecycle {
+  ignore_changes = [
+    pool.0.count
+  ]
+}
 
-  }
+}
 }
