@@ -18,18 +18,18 @@ resource "linode_lke_cluster" "lke_cluster" {
 
   pool {
     type  = "g6-standard-1"
-    count = 2
+    count = 1
 
-    #autoscaler {
-    #  min = 2
-    #  max = 3
-    #}
+    autoscaler {
+      min = 1
+      max = 3
+    }
   }
 
-  #lifecycle {
-  #  ignore_changes = [
-  #    pool.0.count
-   # ]
-  #}
+  lifecycle {
+    ignore_changes = [
+      pool.0.count
+    ]
+  }
 
 }
