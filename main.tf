@@ -22,14 +22,14 @@ resource "linode_lke_cluster" "lke_cluster" {
 
     autoscaler {
       min = 1
-      max = 1
+      max = 3
     }
   }
 
-  lifecycle {
-    ignore_changes = [
-      pool.0.count
-    ]
-  }
+  #lifecycle {
+  #  ignore_changes = [
+  #    pool.0.count
+  #  ]
+  #}
 
 }
