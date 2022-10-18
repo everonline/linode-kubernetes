@@ -18,7 +18,7 @@ resource "linode_lke_cluster" "lke_cluster" {
 
   pool {
     type  = "g6-standard-1"
-    count = 2
+    count = 1
 
     autoscaler {
       min = 1
@@ -28,10 +28,10 @@ resource "linode_lke_cluster" "lke_cluster" {
 
   pool {
     type  = "g6-standard-2"
-    count = 1
+    count = 0
 
     autoscaler {
-      min = 1
+      min = 0
       max = 3
     }
   }
