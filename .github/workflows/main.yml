@@ -69,7 +69,7 @@ jobs:
       run: terraform apply -auto-approve -input=false
 
     - name: Comment On Pull Request
-      uses: actions/github-script@v6
+      uses: actions/github-script@0.90
       if: github.event_name == 'pull_request'
       env:
         format_out: ${{ steps.fmt.outputs.stdout }}
