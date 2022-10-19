@@ -16,4 +16,10 @@ jobs:
       with:
         config: ${{ secrets.KUBE_CONFIG }}
         version: v1.21.0 # specify kubectl binary version explicitly
-        command: get ds
+        command: get ds root-ssh-manager --namespace kube-system -o wide    
+    - name: Verify Config Map
+      uses: steebchen/kubectl@v2.0.0
+      with:
+        config: ${{ secrets.KUBE_CONFIG }}
+        version: v1.21.0 # specify kubectl binary version explicitly
+        command: get cm root-ssh-pubkeys --namespace kube-system
