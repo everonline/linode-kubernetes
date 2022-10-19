@@ -1,4 +1,4 @@
-name: Deployment
+name: Cluster Deployment
 
 on:
   push:

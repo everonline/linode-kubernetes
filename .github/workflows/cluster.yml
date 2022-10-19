@@ -1,5 +1,5 @@
 on: workflow_dispatch
-name: deploy
+name: K8s App Deployment
 jobs:
   deploy:
     name: deploy to cluster
