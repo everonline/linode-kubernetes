@@ -26,15 +26,15 @@ resource "linode_lke_cluster" "lke_cluster" {
     }
   }
 
-  #pool {
-  #  type  = "g6-standard-2"
-  #  count = 1
+  pool {
+    type  = "g6-standard-2"
+    count = 1
 
-  #  autoscaler {
-  #    min = 1
-  #    max = 3
-  #  }
-  #}
+    autoscaler {
+      min = 1
+      max = 3
+    }
+  }
 
   #lifecycle {
   #  ignore_changes = [
