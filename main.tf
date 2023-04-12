@@ -2,7 +2,7 @@ terraform {
   required_providers {
     linode = {
       source  = "linode/linode"
-      version = "1.29.4"
+      version = "1.30.0"
     }
   }
 }
@@ -12,7 +12,7 @@ provider "linode" {
 
 resource "linode_lke_cluster" "lke_cluster" {
   label       = "lke.everonline.eu"
-  k8s_version = "1.23"
+  k8s_version = "1.25"
   region      = "eu-west"
   tags        = ["linode"]
 
