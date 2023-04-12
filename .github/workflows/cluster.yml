@@ -7,18 +7,18 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Deploy SSH Key
-      uses: steebchen/kubectl@v2.0.0
+      uses: steebchen/kubectl@v2.1.1
       with: # defaults to latest kubectl binary version
         config: ${{ secrets.KUBE_CONFIG }}
         command: apply -R -f ssh/
     - name: Verify Daemon Set
-      uses: steebchen/kubectl@v2.0.0
+      uses: steebchen/kubectl@v2.1.1
       with:
         config: ${{ secrets.KUBE_CONFIG }}
         version: v1.21.0 # specify kubectl binary version explicitly
         command: get ds root-ssh-manager --namespace kube-system -o wide    
     - name: Verify Config Map
-      uses: steebchen/kubectl@v2.0.0
+      uses: steebchen/kubectl@v2.1.1
       with:
         config: ${{ secrets.KUBE_CONFIG }}
         version: v1.21.0 # specify kubectl binary version explicitly
