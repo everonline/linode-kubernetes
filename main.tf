@@ -21,7 +21,7 @@ resource "linode_lke_cluster" "lke_cluster" {
     count = 1
 
     autoscaler {
-      min = 1
+      min = 3
       max = 3
     }
   }
