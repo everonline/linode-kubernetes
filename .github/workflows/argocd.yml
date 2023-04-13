@@ -1,0 +1,31 @@
+on: workflow_dispatch
+name: ArgoCD Deployment
+jobs:
+  deploy:
+    name: deploy to cluster
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Create ArgoCD Namespace
+      uses: steebchen/kubectl@v2.1.1
+      with: # defaults to latest kubectl binary version
+        config: ${{ secrets.KUBE_CONFIG }}
+        command: create namespace argocd
+    - name: Verify Namespace
+      uses: steebchen/kubectl@v2.1.1
+      with:
+        config: ${{ secrets.KUBE_CONFIG }}
+        version: v1.27.0 # specify kubectl binary version explicitly
+        command: get namespaces   
+    - name: Deploy ArgoCD
+      uses: steebchen/kubectl@v2.1.1
+      with:
+        config: ${{ secrets.KUBE_CONFIG }}
+        version: v1.27.0 # specify kubectl binary version explicitly
+        command: apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.6.7/manifests/install.yaml
+    - name: Verify ArgoCD Resources
+      uses: steebchen/kubectl@v2.1.1
+      with:
+        config: ${{ secrets.KUBE_CONFIG }}
+        version: v1.27.0 # specify kubectl binary version explicitly
+        command: get all -n argocd
