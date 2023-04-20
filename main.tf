@@ -48,7 +48,6 @@ resource "linode_lke_cluster" "lke_cluster" {
 
 }
 
-/*
 provider "helm" {
   kubernetes { 
     config_path      = "kube-config"
@@ -84,4 +83,4 @@ resource "helm_release" "metrics_server" {
         value = "{--secure-port=8443}"
     }   
     
-} */
+}
