@@ -41,13 +41,6 @@ jobs:
         }
         EOF
 
-    - name: Setup Terraform KC
-      id: config
-      run: |
-        cat > ~/config << EOF
-        "${{ secrets.KUBE_CONFIG }}"
-        EOF
-
     - name: Terraform Init
       id: init
       run: terraform init
