@@ -49,6 +49,9 @@ resource "linode_lke_cluster" "lke_cluster" {
 }
 
 provider "helm" {
+      kubernetes {
+    config_path = "${KUBE_CONFIG_PATH}"
+  }
 }
 
 resource "helm_release" "metrics_server" {
