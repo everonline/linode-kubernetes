@@ -50,7 +50,7 @@ resource "linode_lke_cluster" "lke_cluster" {
 
 provider "helm" {
   kubernetes {
-    config_path = "~/config"
+    config_path = "~/kubeconfig.yaml"
   }
 }
 
