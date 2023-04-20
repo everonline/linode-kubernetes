@@ -50,12 +50,13 @@ resource "linode_lke_cluster" "lke_cluster" {
 
 provider "helm" {
   kubernetes { 
-    config_path      = "./kube-config"
+    config_path      = "kube-config"
   }
 }
 
+/*
 resource "helm_release" "metrics_server" {
-    #depends_on       = [local_file.kubeconfig]
+    depends_on       = [local_file.kubeconfig]
     name             = "metrics-server"
     repository       = "https://charts.bitnami.com/bitnami"
     chart            = "metrics-server"
@@ -83,4 +84,4 @@ resource "helm_release" "metrics_server" {
         value = "{--secure-port=8443}"
     }   
     
-}
+} */
