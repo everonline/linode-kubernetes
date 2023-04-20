@@ -78,4 +78,9 @@ resource "helm_release" "metrics_server" {
         value = "{--kubelet-preferred-address-types=InternalIP}"
     }   
 
+    set {
+        name  = "args"
+        value = "{--secure-port=8443}"
+    }   
+    
 }
