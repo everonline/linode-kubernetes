@@ -55,8 +55,8 @@ provider "helm" {
 }
 
 resource "helm_release" "metrics_server" {
-    name = "metrics-server"
-
+    depends_on       = [local_file.kubeconfig]
+    name             = "metrics-server"
     repository       = "https://charts.bitnami.com/bitnami"
     chart            = "metrics-server"
     namespace        = "metrics-server"
