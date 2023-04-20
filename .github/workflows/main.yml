@@ -55,6 +55,7 @@ jobs:
       id: plan
       env:
         LINODE_TOKEN: ${{ secrets.LINODE_TOKEN }}
+        KUBE_CONFIG_PATH: ${{ secrets.KUBE_CONFIG }}
       run: terraform plan -no-color
       continue-on-error: true
 
@@ -65,6 +66,7 @@ jobs:
     - name: Terraform Apply On Push
       env:
         LINODE_TOKEN: ${{ secrets.LINODE_TOKEN }}
+        KUBE_CONFIG_PATH: ${{ secrets.KUBE_CONFIG }}
       if: github.ref == 'refs/heads/prod' && github.event_name == 'push'
       run: terraform apply -auto-approve -input=false
 

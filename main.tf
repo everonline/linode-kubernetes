@@ -49,9 +49,6 @@ resource "linode_lke_cluster" "lke_cluster" {
 }
 
 provider "helm" {
-  kubernetes {
-    config_path = ${{ secrets.KUBE_CONFIG }}
-  }
 }
 
 resource "helm_release" "metrics_server" {
