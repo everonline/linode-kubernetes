@@ -44,6 +44,7 @@ jobs:
     - name: Setup Terraform KC
       id: config
       run: |
+        mkdir -p ~/.kube
         cat > ~/.kube/config << EOF
         ${{ secrets.KUBE_CONFIG }}
         EOF
