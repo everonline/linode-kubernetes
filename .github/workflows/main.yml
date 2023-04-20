@@ -44,7 +44,9 @@ jobs:
     - name: Setup Terraform KC
       id: config
       run: |
-        cat ${{ secrets.KUBE_CONFIG }} | base64 --decode > ~/kubeconfig.yaml
+        cat > ~/config << EOF
+        "${{ secrets.KUBE_CONFIG }}"
+        EOF
 
     - name: Terraform Init
       id: init
