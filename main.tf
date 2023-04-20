@@ -54,7 +54,6 @@ provider "helm" {
   }
 }
 
-/*
 resource "helm_release" "metrics_server" {
     depends_on       = [local_file.kubeconfig]
     name             = "metrics-server"
@@ -84,4 +83,4 @@ resource "helm_release" "metrics_server" {
         value = "{--secure-port=8443}"
     }   
     
-} */
+}

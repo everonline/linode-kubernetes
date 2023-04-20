@@ -41,6 +41,10 @@ jobs:
         }
         EOF
 
+    - name: Setup Terraform Export
+      id: export
+      run: export KUBE_CONFIG_PATH=kube-config
+
     - name: Terraform Init
       id: init
       run: terraform init
