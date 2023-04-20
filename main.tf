@@ -4,6 +4,10 @@ terraform {
       source  = "linode/linode"
       version = "1.30.0"
     }
+    helm = {
+      source  = "hashicorp/helm"
+      version = "2.9.0"
+    }    
   }
 }
 
@@ -41,5 +45,34 @@ resource "linode_lke_cluster" "lke_cluster" {
       pool.0.count
     ]
   }
+
+}
+
+provider "helm" {
+}
+
+resource "helm_release" "metrics_server" {
+    name = "metrics-server"
+
+    repository       = "https://charts.bitnami.com/bitnami"
+    chart            = "metrics-server"
+    namespace        = "metrics-server"
+    version          = "6.2.17"
+    create_namespace = true
+
+    set {
+        name  = "apiService.create"
+        value = "true"
+    }
+
+    set {
+        name  = "args"
+        value = "{--kubelet-insecure-tls=true}"
+    }
+
+    set {
+        name  = "args"
+        value = "{--kubelet-preferred-address-types=InternalIP}"
+    }   
 
 }
