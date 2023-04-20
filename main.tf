@@ -48,20 +48,14 @@ resource "linode_lke_cluster" "lke_cluster" {
 
 }
 
-resource "local_file" "kubeconfig" {
-  depends_on = [linode_lke_cluster.lke_cluster]
-  filename   = "kube-config"
-  content    = base64decode(linode_lke_cluster.lke_cluster.kubeconfig)
-}
-
 provider "helm" {
-  #kubernetes { 
-  #  config_path      = "kube-config"
-  #}
+  kubernetes { 
+    config_path      = "kube-config"
+  }
 }
 
 resource "helm_release" "metrics_server" {
-    depends_on       = [local_file.kubeconfig]
+    #depends_on       = [local_file.kubeconfig]
     name             = "metrics-server"
     repository       = "https://charts.bitnami.com/bitnami"
     chart            = "metrics-server"
