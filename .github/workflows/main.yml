@@ -41,9 +41,9 @@ jobs:
         }
         EOF
 
-    - name: Setup Terraform Export
-      id: export
-      run: export KUBE_CONFIG_PATH=kube-config
+    #- name: Setup Terraform Export
+    #  id: export
+    #  run: export KUBE_CONFIG_PATH=kube-config
 
     - name: Terraform Init
       id: init
@@ -55,9 +55,9 @@ jobs:
       run: terraform validate -no-color
       continue-on-error: true
 
-    - name: Terraform Refresh
-      id: validate
-      run: terraform apply -refresh=true
+    - name: Terraform State
+      id: state
+      run: terraform state rm [helm_release.metrics_server]
 
     - name: Terraform Plan
       id: plan
