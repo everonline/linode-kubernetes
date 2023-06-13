@@ -7,7 +7,7 @@ on:
 
 jobs:
   terraform-actions:
-    name: Workflow
+    name: Workflo
     runs-on: ubuntu-latest
     environment: linode
 
